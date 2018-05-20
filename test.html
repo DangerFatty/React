@@ -7,7 +7,7 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
-        <input type="text" id = "testinput">
+        <!-- <input type="text" id = "testinput"> -->
         <!-- <button onclick="createTable()">Create</button> -->
         <table id = "test"></table>
         
@@ -33,28 +33,24 @@
                 {   //因所有class皆繼承自React.Component, 當class想要產生的屬性時,
                     //需呼叫super(props), 用來表示接下來之屬性為當前class的
                     super(props);       
-                    this.variance = {text:'text',input:'Done!!',button:'Click',};
+                    this.state = {text:'text',input:'Done!!',button:'Click',};
                 }
-                buttonClick = () => 
-                {
-                    return (
-                        this.renderTD()
-                    );
-                }
-                renderTD()
-                {
-                    return <TD />;
-                }
+                // buttonClick = () => 
+                // {
+                //     return (
+                //         this.renderTD()
+                //     );
+                // }
                 render()
                 {
                     //return 下只能有一個根元素,因此用div包住button跟th
                     return(                     
                         <div>                      
-                            <button onClick={() => this.buttonClick()} id="button">
-                                {this.variance.button}
+                            <button onClick={() => this.setState({button:"Done!!"})}>
+                                {this.state.button}
                             </button>
-                            <th>
-                                {this.variance.text}
+                            <th id = "th1">
+                                {this.state.text}
                             </th>
                         </div>
                         
