@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script> 
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <input type="text" id = "testinput">
+        <!-- <button onclick="createTable()">Create</button> -->
+        <table id = "test"></table>
+        <span></span>
+        
+        <script type="text/babel">
+            class TD extends React.Component
+            {
+                constructor(props)
+                {
+                    super(props);
+                    this.variance = {text:'Create'};
+                }
+                render() 
+                {
+                    return(
+                            <td>{this.variance.text}</td>
+                    )
+                }
+            }
+            class Table extends React.Component
+            {
+                constructor(props)     
+                {   //因所有class皆繼承自React.Component, 當class想要產生的屬性時,
+                    //需呼叫super(props), 用來表示接下來之屬性為當前class的
+                    super(props);       
+                    this.variance = {text:'text',input:'Done!!',button:'Click',};
+                }
+                buttonClick = () => 
+                {
+                    return (
+                        this.renderTD()
+                    );
+                }
+                renderTD()
+                {
+                    return <TD />;
+                }
+                render()
+                {
+                    //return 下只能有一個根元素,因此用div包住button跟th
+                    return(                     
+                        <div>                      
+                            <button onClick={() => this.buttonClick()} id="button">
+                                {this.variance.button}
+                            </button>
+                            <th>
+                                {this.variance.text}
+                            </th>
+                        </div>
+                        
+                    );     
+                }
+            }
+        
+            ReactDOM.render(
+                <Table />,
+                document.getElementById('test')
+            );
+        </script>
+    </body>
+</html>
